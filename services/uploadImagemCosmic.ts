@@ -36,4 +36,4 @@ const {
     }
   }
 
-export { upload, uploadImagemCosmic};
+export { upload, uploadImagemCosmic };
