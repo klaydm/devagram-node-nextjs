@@ -32,7 +32,7 @@ const handler = nc()
 
     const image = await uploadImagemCosmic(req);
     const publicacao = {
-      IdUsuario : usuario._id,
+      idUsuario : usuario._id,
       descricao,
       foto : image.media.url,
       data : new Date()
