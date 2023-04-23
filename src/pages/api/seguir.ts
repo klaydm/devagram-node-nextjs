@@ -1,3 +1,4 @@
+import { politicaCORS } from './../../../middlewares/politicaCORS';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { RespostaPadraoMsg } from './../../../types/RespostaPadraoMsg';
 import { conectarMongoDB } from './../../../middlewares/conectarMongoDB';
@@ -17,10 +18,7 @@ const endpointSeguir =
       }
 
       const usuarioASerSeguido = await UsuarioModel.findById(id);
-        console.log(usuarioASerSeguido);
-      if(!usuarioASerSeguido){
-        console.log(usuarioASerSeguido);
-        
+      if(!usuarioASerSeguido){        
         return res.status(400).json({ erro : 'Usuário a ser seguido não encontrado'});
       }
 
@@ -61,4 +59,4 @@ const endpointSeguir =
   }
 }
 
-export default validarTokenJWT(conectarMongoDB(endpointSeguir));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(endpointSeguir)));

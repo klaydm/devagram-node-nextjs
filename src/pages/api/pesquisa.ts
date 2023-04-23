@@ -1,3 +1,4 @@
+import { politicaCORS } from './../../../middlewares/politicaCORS';
 import { UsuarioModel } from './../../../models/UsuarioModel';
 import type {NextApiRequest, NextApiResponse} from 'next';
 import { conectarMongoDB } from './../../../middlewares/conectarMongoDB';
@@ -23,9 +24,8 @@ const pesquisaEndpoint
           
           const usuariosEncontrados = await UsuarioModel.find({
             $or : [{nome : {$regex : filtro, $options : 'i'}},
-                  {email : {$regex : filtro, $options : 'i'}}]
-  
-          });
+                  {email : {$regex : filtro, $options : 'i'}}],
+          });         
           return res.status(200).json(usuariosEncontrados);
         }
         return res.status(405).json({erro : 'o método informado não é válido'});
@@ -36,4 +36,4 @@ const pesquisaEndpoint
     }
 }
 
-export default validarTokenJWT(conectarMongoDB(pesquisaEndpoint));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(pesquisaEndpoint)));

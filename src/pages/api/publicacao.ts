@@ -1,3 +1,4 @@
+import { politicaCORS } from './../../../middlewares/politicaCORS';
 import type { NextApiResponse } from 'next';
 import type { RespostaPadraoMsg } from './../../../types/RespostaPadraoMsg';
 import nc from 'next-connect';
@@ -38,6 +39,9 @@ const handler = nc()
       data : new Date()
     }
 
+    usuario.publicacoes++;
+    await UsuarioModel.findByIdAndUpdate({_id : usuario._id}, usuario);
+
     await PublicacaoModel.create(publicacao);
     return res.status(200).json({msg : 'Publicação criada com sucesso'});
       
@@ -54,4 +58,4 @@ const handler = nc()
     }
   }
 
-export default validarTokenJWT(conectarMongoDB(handler));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(handler)));

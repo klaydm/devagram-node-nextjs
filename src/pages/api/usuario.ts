@@ -1,3 +1,4 @@
+import { politicaCORS } from './../../../middlewares/politicaCORS';
 import type {NextApiRequest, NextApiResponse} from 'next';
 import { RespostaPadraoMsg } from './../../../types/RespostaPadraoMsg';
 import {validarTokenJWT} from '../../../middlewares/validarTokenJWT';
@@ -57,4 +58,4 @@ export const config = {
   }
 }
 
-export default validarTokenJWT(conectarMongoDB(handler));
+export default politicaCORS(validarTokenJWT(conectarMongoDB(handler)));
