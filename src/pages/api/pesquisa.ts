@@ -6,7 +6,7 @@ import { validarTokenJWT } from './../../../middlewares/validarTokenJWT';
 import type { RespostaPadraoMsg } from './../../../types/RespostaPadraoMsg';
 
 const pesquisaEndpoint 
-= async (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg> | any[]) => {
+= async (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg | any[]>) => {
     try {
       if(req.method === 'GET'){
         if(req?.query?.id){
