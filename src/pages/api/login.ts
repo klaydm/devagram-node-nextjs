@@ -32,7 +32,7 @@ const endpointLogin = async (
             seguidores: usuarioEncontrado.seguidores,
             seguindo: usuarioEncontrado.seguindo,
             publicacoes: usuarioEncontrado.publicacoes,
-            token }});
+            token },});
     }
     return res.status(400).json({erro : "Usuário ou senha não encontrados"});
   }
