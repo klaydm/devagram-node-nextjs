@@ -25,14 +25,16 @@ const endpointLogin = async (
       const usuarioEncontrado = usuariosEncontrados[0];
 
       const token = jwt.sign({ _id :  usuarioEncontrado._id}, MINHA_CHAVE_JWT)
-          return res.status(200).json({dados : 
-            {id : usuarioEncontrado._id, 
+      const dados = {
+            id : usuarioEncontrado._id, 
             nome : usuarioEncontrado.nome,
             email : usuarioEncontrado.email,
             seguidores: usuarioEncontrado.seguidores,
             seguindo: usuarioEncontrado.seguindo,
             publicacoes: usuarioEncontrado.publicacoes,
-            token },});
+            token
+      }
+          return res.status(200).json({dados});
     }
     return res.status(400).json({erro : "Usuário ou senha não encontrados"});
   }
