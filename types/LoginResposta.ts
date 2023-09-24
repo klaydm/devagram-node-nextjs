@@ -1,4 +1,5 @@
 export type LoginResposta = {
+  dados: object,
   id: string;
   nome : string,
   email : string,
