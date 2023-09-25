@@ -14,7 +14,7 @@ const bucketDevagram = createBucketClient({
   const upload = multer({storage : storage});
 
   const uploadImagemCosmic = async (req: any) => {
-    if(req?.file?.originalname){
+    if(req.file.originalname){
       if(
         !req.file.originalname.includes(".png") &&
         !req.file.originalname.includes(".jpg") && 
@@ -40,12 +40,7 @@ const bucketDevagram = createBucketClient({
           media : media_object,
           folder: "avatar",
         })
-      }else{
-        return await bucketDevagram.media.insertOne({
-          media : media_object,
-          folder: "stories",
-      });
-    }
+      }
   }
 }; 
 
