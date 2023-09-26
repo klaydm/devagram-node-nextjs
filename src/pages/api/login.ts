@@ -34,7 +34,7 @@ const endpointLogin = async (
             publicacoes: usuarioEncontrado.publicacoes,
             token
       }
-          return res.status(200).json({token});
+          return res.status(200).json({nome : usuarioEncontrado.nome, email : usuarioEncontrado.email, token});
     }
     return res.status(400).json({erro : "Usuário ou senha não encontrados"});
   }
