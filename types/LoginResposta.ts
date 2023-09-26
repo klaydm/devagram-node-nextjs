@@ -1,5 +1,4 @@
 export type LoginResposta = {
-  dados: {
     id: string;
     nome: string;
     email: string;
@@ -7,5 +6,4 @@ export type LoginResposta = {
     seguindo: number;
     publicacoes: number;
     token: string;
-  },
 }
